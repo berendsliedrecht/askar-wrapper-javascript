@@ -19,13 +19,13 @@ public:
 
 private:
   static void installNative(jni::alias_ref<jni::JClass>,
-                            jlong jsiRuntimePointer,
-                            jni::alias_ref<facebook::react::CallInvokerHolder::javaobject> jsCallInvokerHolder) {
+                            jlong jsiRuntimePointer
+                            ) {
 
     auto runtime = reinterpret_cast<jsi::Runtime*>(jsiRuntimePointer);
-    auto jsCallInvoker = jsCallInvokerHolder->cthis()->getCallInvoker();
+//    auto jsCallInvoker = jsCallInvokerHolder->cthis()->getCallInvoker();
 
-    askarTurboModuleUtility::registerTurboModule(*runtime, jsCallInvoker);
+    askarTurboModuleUtility::registerTurboModule(*runtime);
   }
 };
 

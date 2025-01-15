@@ -23,8 +23,8 @@ struct State {
 };
 
 // Install the Turbomodule
-void registerTurboModule(jsi::Runtime &rt,
-                         std::shared_ptr<react::CallInvoker> jsCallInvoker);
+void registerTurboModule(jsi::Runtime &rt);
+//                         std::shared_ptr<react::CallInvoker> jsCallInvoker);
 
 // Asserts that a jsi::Value is an object and can be safely transformed
 void assertValueIsObject(jsi::Runtime &rt, const jsi::Value *val);
@@ -56,7 +56,7 @@ void callbackWithResponse(CallbackId result, ErrorCode code, T response);
 template <typename T>
 jsi::Value createReturnValue(jsi::Runtime &rt, ErrorCode code, T out);
 
-jsi::ArrayBuffer byteBufferToArrayBuffer(jsi::Runtime &rt, ByteBuffer bb);
+//jsi::ArrayBuffer byteBufferToArrayBuffer(jsi::Runtime &rt, ByteBuffer bb);
 jsi::ArrayBuffer secretBufferToArrayBuffer(jsi::Runtime &rt, SecretBuffer sb);
 
 } // namespace askarTurboModuleUtility

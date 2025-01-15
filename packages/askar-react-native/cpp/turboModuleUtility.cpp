@@ -4,18 +4,14 @@
 
 namespace askarTurboModuleUtility {
 
-using byteVector = std::vector<uint8_t>;
-
 std::shared_ptr<react::CallInvoker> invoker;
 
-void registerTurboModule(jsi::Runtime &rt,
-                         std::shared_ptr<react::CallInvoker> jsCallInvoker) {
+void registerTurboModule(jsi::Runtime &rt) {
   // Setting the callInvoker for async code
-  invoker = jsCallInvoker;
+//  invoker = jsCallInvoker;
   // Create a TurboModuleRustHostObject
-  auto instance = std::make_shared<AskarTurboModuleHostObject>(rt);
   // Create a JS equivalent object of the instance
-  jsi::Object jsInstance = jsi::Object::createFromHostObject(rt, instance);
+  jsi::Object jsInstance = giveObj(rt);
   // Register the object on global
   rt.global().setProperty(rt, "_askar", std::move(jsInstance));
 }

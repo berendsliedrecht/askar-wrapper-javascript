@@ -1,5 +1,5 @@
 import { askar } from '@openwallet-foundation/askar-react-native'
-import { StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, Text, View } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,8 +10,13 @@ const styles = StyleSheet.create({
   },
 })
 
-export const App = () => (
-  <View style={styles.container}>
-    <Text>{askar.version()}</Text>
-  </View>
-)
+export const App = () => {
+  const { major, minor, patch } = Platform.constants.reactNativeVersion
+
+  return (
+    <View style={styles.container}>
+      <Text>React native version: {`${major}.${minor}.${patch}`}</Text>
+      <Text>askar version: {askar.version()}</Text>
+    </View>
+  )
+}
